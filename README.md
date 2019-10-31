@@ -8,7 +8,7 @@ the LogicGate parent class as well as logic gate class definitions based on trad
 
 - taut_circ.py and excluded_mid.py both model the logic of the law of excluded middle. Using trinary logic, they demonstrate how the law of excluded middle is not tautological if we add a third truth valuation. taut_circ.py uses assignment to build the circuit, whereas excluded_mid.py uses the connector class to creat composite circuits
 
-- non_con.py will does similar to what taut_circ.py and excluded_mid.py do, but for the principle of non-contradiction.
+- non_con.py does something similar to what taut_circ.py and excluded_mid.py do, but for the principle of non-contradiction.
 
 Objective:
 The main purpose of this project is to get a better grasp on object oriented programming in general by modeling
