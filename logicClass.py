@@ -1,4 +1,5 @@
-# Some class definitions for some logic gates
+# Some class definitions for some logic gates 
+# performGateLogic() is based on traditional binary logic
 
 class LogicGate:
     """ the parent-most class """

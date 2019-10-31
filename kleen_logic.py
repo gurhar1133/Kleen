@@ -11,6 +11,10 @@ class BinaryGate(LogicGate):
         LogicGate.__init__(self, n)
         self.pinA = None
         self.pinB = None
+        # when a binary gate is initialized it is not connected unless 
+        # we connected after it is initialized
+        self.connectedA = False
+        self.connectedB = False
     
     def getPinA(self):
         if self.pinA == None:
@@ -21,8 +25,10 @@ class BinaryGate(LogicGate):
                 raise RuntimeError("must enter -1, 0 or 1")
             else:
                 return p 
-        else: 
+        elif self.connectedA: 
             return self.pinA.getFrom().getOutput()
+        else:
+            return self.pinA
 
     def getPinB(self):
         if self.pinB == None:
@@ -33,10 +39,12 @@ class BinaryGate(LogicGate):
                 raise RuntimeError("must enter -1, 0 or 1")
             else:
                 return p
-        else:
+        elif self.connectedB:
             # if the pin is set then ther is a connection and we get it
             # by retrieving fromgate's output
             return self.pinB.getFrom().getOutput()
+        else:
+            return self.pinB
     
     def setNextPin(self, source):
         # starting at the first pin of the binary gate passed into 
@@ -46,9 +54,11 @@ class BinaryGate(LogicGate):
         # gate has no empty pins and an exception will be raised
         if self.pinA == None:
             self.pinA = source
+            self.connectedA = True
         else:
             if self.pinB == None:
                 self.pinB = source
+                self.connectedB = True
             else:
                 raise RuntimeError("Error: this gate has no empty pins")
 
@@ -107,6 +117,7 @@ class UnaryGate(LogicGate):
         # distinguising data"
         LogicGate.__init__(self,n)
         self.pin = None
+        self.connected = False
 
     def getPin(self):
         if self.pin == None:
@@ -117,12 +128,15 @@ class UnaryGate(LogicGate):
                 raise RuntimeError("must enter 0 or 1")
             else:
                 return p
-        else:
+        elif self.connected:
             return self.pin.getFrom().getOutput()
+        else:
+            return self.pin
 
     def setNextPin(self, source):
         if self.pin == None:
             self.pin = source
+            self.connected = True
         else:
             raise RuntimeError("Error: this gate has no empty pins")
 
@@ -134,7 +148,7 @@ class NotGate(UnaryGate):
 
     def performGateLogic(self):
         pin = self.getPin()
-        
+        self.pin = pin
         # now we have to model our not gate on three valued logic
         if pin == 1:
             return -1
@@ -166,6 +180,8 @@ def main():
         if i == 0:
             print("Welcome to Kleen logic\n")
             print("You'll be asked for some input")
+            print("In this demonstration you'll be playing with a not gate")
+            print("attached to another not gate")
             print("Try inputting 1, you'll notice that the input is negated twice")
             print("Basically two inverse processes are caried out")
             
