@@ -173,8 +173,7 @@ class Connector:
     def getTo(self):
         return self.togate
 
-# TODO: define more circuits which demonstrate implications of using three value
-# logic
+
 def main():
     for i in range(3):
         if i == 0:
