@@ -1,7 +1,7 @@
 # Kleen
 - Based on the circut modeling project from runestone's adaptation of Problem Solving with Algorithms and Data Structures using Python By Brad Miller and David Ranum, Luther College. (see https://www.amazon.com/Problem-Solving-Algorithms-Structures-Python/dp/1590282574/ref=sr_1_1?crid=2BBIE0R5C59HI&keywords=problem+solving+with+algorithms+and+data+structures+using+python&qid=1572490645&sprefix=problem+sol%2Caps%2C205&sr=8-1) 
 
--logicClass.py has minimal modifications to the original project from the book and contains 
+- logicClass.py has minimal modifications to the original project from the book and contains 
 the LogicGate parent class as well as logic gate class definitions based on traditional binary logic. 
 
 - kleen_logic.py introduces trinary logic gates and has a main function that walks the user through some implications of trinary logic values. Some modifications to getPin() methods were made for easier customization of circuits. Such non-traditional logics have been devised by philosophers. One example is Kleen's K3 logic.(see https://en.wikipedia.org/wiki/Three-valued_logic) 
